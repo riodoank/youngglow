@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Glow Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fde4cf;
+            margin: 0;
+            padding: 0px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 0px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 0px;
+        }
+        .class-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            padding: 20px;
+        }
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .class-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co.com/VYYmTZT/In-Shot-20240414-112345068.png" alt="Young Glow Studio Logo" style="width: 100px; height: auto;">
+        <h1>Young Glow Studio</h1>
+        <p>Temukan Program Favoritmu!!!</p>
+    </header>
+
+    <div class="container">
+        <div class="class-card">
+            <h2><center>Reformer Class</center></h2>
+            <div class="class-grid">
+                <img src="https://i.ibb.co.com/HBxwWV4/2301-i607-024-S-m012-c12-pilates-isometric-set.jpg" alt="Pilates Image 1" style="width: 320%; height: auto;">
+            </div>
+            <a href="reformer.html"><button class="button">Klik Disini</button></a>
+        </div>
+
+        <div class="class-card">
+            <h2><center>Yoga Class</center></h2>
+            <div class="class-grid">
+                <img src="https://i.ibb.co.com/4dXYJT6/2301-i607-024-S-m012-c12-pilates-isometric-set-Copy.jpg" alt="Yoga Image 1" style="width: 320%; height: auto;">
+            </div>
+            <a href="yoga.html"><button class="button">Klik Disini</button></a>
+        </div>
+    </div>
+</body>
+</html>
