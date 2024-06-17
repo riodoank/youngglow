@@ -26,28 +26,31 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 45%;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
         .class-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 20px;
+            flex-grow: 1; /* Allows the grid to expand and fill available space */
+            display: flex; /* Changes grid to flex for easier alignment */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .class-grid img {
-            width: 100%;
-            height: auto;
+            max-width: 100%; /* Ensures image does not exceed its container */
+            height: auto; /* Maintains aspect ratio */
             border-radius: 5px;
+            margin-bottom: 10px; /* Adds space between the image and the button */
         }
         .button {
-            display: block;
-            width: 100%;
-            padding: 10px;
             background-color: #4CAF50;
             color: white;
             text-align: center;
+            padding: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%; /* Ensures the button stretches to fit the card */
         }
     </style>
 </head>
@@ -62,7 +65,7 @@
         <div class="class-card">
             <h2><center>Reformer Class</center></h2>
             <div class="class-grid">
-                <img src="https://i.ibb.co.com/HBxwWV4/2301-i607-024-S-m012-c12-pilates-isometric-set.jpg" alt="Pilates Image 1" style="width: 320%; height: auto;">
+                <img src="https://i.ibb.co.com/HBxwWV4/2301-i607-024-S-m012-c12-pilates-isometric-set.jpg" alt="Pilates Image 1">
             </div>
             <a href="reformer.html"><button class="button">Klik Disini</button></a>
         </div>
@@ -70,7 +73,7 @@
         <div class="class-card">
             <h2><center>Yoga Class</center></h2>
             <div class="class-grid">
-                <img src="https://i.ibb.co.com/4dXYJT6/2301-i607-024-S-m012-c12-pilates-isometric-set-Copy.jpg" alt="Yoga Image 1" style="width: 320%; height: auto;">
+                <img src="https://i.ibb.co.com/4dXYJT6/2301-i607-024-S-m012-c12-pilates-isometric-set-Copy.jpg" alt="Yoga Image 1">
             </div>
             <a href="yoga.html"><button class="button">Klik Disini</button></a>
         </div>
