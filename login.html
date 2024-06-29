@@ -52,6 +52,14 @@
     <div class="iframe-container">
         <iframe src="https://script.google.com/macros/s/AKfycbzK7jWhSOWyaHROzNGk4w3AH08GPk9mvN74_vvGOa7fKCCkRDB_Tf_TkHKoPCrM4WEW/exec" title="YoungGlow"></iframe>
     </div>
+    <script>
+    window.addEventListener("message", function(event) {
+        if (event.origin === "https://script.google.com/macros/s/AKfycbzK7jWhSOWyaHROzNGk4w3AH08GPk9mvN74_vvGOa7fKCCkRDB_Tf_TkHKoPCrM4WEW/exec") {
+            document.querySelector("iframe").style.height = event.data + "px";
+        }
+    });
+</script>
+
     <h4><center>Untuk Mendapatkan Token silahkan Beli paket lebih dulu</center></h4>
     <div class="button-container">
         <button class="button"><a href="https://alden2851.softr.app/paketreformer/">Paket Reformer</a></button>
