@@ -15,14 +15,14 @@
             max-width: 400px;
             margin: auto;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .iframe-container iframe {
             width: 100%;
-            height: 320px;
+            height: 570px;
             border: none;
             border-radius: 10px;
         }
@@ -38,7 +38,7 @@
             display: inline-block;
             padding: 5px 5px;
             margin: 1px;
-            background-color: #0a45a4;
+            background-color: #fab98f;
             border: none;
             border-radius: 5px;
             color: white;
@@ -48,14 +48,26 @@
     </style>
 </head>
 <body>
+
     <center><img src="https://i.imgur.com/sxmxlzj.png" alt="Logo" class="logo" height="100px"></center>
-    <div class="iframe-container">
-        <iframe src="https://script.google.com/macros/s/AKfycbzK7jWhSOWyaHROzNGk4w3AH08GPk9mvN74_vvGOa7fKCCkRDB_Tf_TkHKoPCrM4WEW/exec" title="YoungGlow"></iframe>
-    </div>
-    <h4><center>Untuk Mendapatkan Token silahkan Beli paket lebih dulu</center></h4>
+
+    <h4><center>Beli paket Untuk Mendapatkan Token</center></h4>
     <div class="button-container">
         <button class="button"><a href="https://alden2851.softr.app/paketreformer/">Paket Reformer</a></button>
         <button class="button"><a href="https://alden2851.softr.app/paketyoga/">Paket Yoga</a></button>
+    </div><br>
+
+        <div class="iframe-container">
+        <iframe id="myIframe" src="https://script.google.com/macros/s/AKfycbzK7jWhSOWyaHROzNGk4w3AH08GPk9mvN74_vvGOa7fKCCkRDB_Tf_TkHKoPCrM4WEW/exec" title="YoungGlow"></iframe>
     </div>
+    <script>
+        function adjustIframeHeight() {
+            const iframe = document.getElementById('myIframe');
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+        }
+
+        const iframe = document.getElementById('myIframe');
+        iframe.onload = adjustIframeHeight;
+    </script>
 </body>
 </html>
