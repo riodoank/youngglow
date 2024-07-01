@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Paket</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://i.imgur.com/sxmxlzj.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+    </style>
+    <script>
+        function updatePaketOptions() {
+            const paketSelect = document.getElementById('paket');
+            paketSelect.innerHTML = ''; // Clear existing options
 
+            if (document.getElementById('yoga').checked) {
+                const options = ['Yoga 1', 'Yoga 8', 'Yoga 10', 'Yoga Unlimited'];
+                options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.text = option;
+                    paketSelect.add(opt);
+                });
+            } else if (document.getElementById('reformer').checked) {
+                const options = ['Reformer 1', 'Reformer 5', 'Reformer 8'];
+                options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.text = option;
+                    paketSelect.add(opt);
+                });
+            }
+        }
+
+        function registerPaket() {
+            const nama = document.getElementById('nama').value;
+            const hp = document.getElementById('hp').value;
+            const paket = document.getElementById('paket').value;
+            const spinner = document.getElementById('spinner');
+            const activity = document.querySelector('input[name="activity"]:checked').value;
+
+            spinner.classList.remove('hidden'); // Show the spinner
+
+            google.script.run.withSuccessHandler(function(url) {
+                window.open(url, '_blank'); // Opens the WhatsApp link in a new tab
+                document.getElementById('thankYouMessage').style.display = 'block'; // Show the thank you message
+                
+                // Load external content after showing the thank you message
+                loadExternalContent();
+
+                spinner.classList.add('hidden'); // Hide the spinner
+            }).registerpaket(nama, hp, paket, activity);
+        }
+
+        function loadExternalContent() {
+            fetch('https://script.google.com/macros/s/AKfycbzK7jWhSOWyaHROzNGk4w3AH08GPk9mvN74_vvGOa7fKCCkRDB_Tf_TkHKoPCrM4WEW/exec?page=order')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('externalContent').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading external content:', error));
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <center><h1 class="mt-5">Register Paket</h1></center>
+        <form onsubmit="event.preventDefault(); registerPaket();">
+            <div class="form-group">
+                <label for="nama">Nama:</label>
+                <input class="form-control" type="text" id="nama" placeholder="Nama Anda" aria-label="default input example" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hp">HP:</label>
+                <input class="form-control" type="text" id="hp" placeholder="Nomor Hp / Whatsapp" aria-label="default input example" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="paket">Paket:</label>
+                <div class="d-flex align-items-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="activity" id="yoga" value="Yoga" onchange="updatePaketOptions()" required>
+                        <label class="form-check-label" for="yoga">Yoga</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="activity" id="reformer" value="Reformer" onchange="updatePaketOptions()" required>
+                        <label class="form-check-label" for="reformer">Reformer</label>
+                    </div>
+                </div>
+                <select class="form-control mt-2" id="paket" required>
+                    <option value="" disabled selected>Select your option</option>
+                </select>
+            </div>
+            
+            <center><button type="submit" class="btn btn-primary">
+                Beli Paket
+                <div id="spinner" class="spinner hidden"></div>
+            </button></center>
+        </form>
+        <div id="thankYouMessage" class="mt-3" style="display:none;">
+            <h2>Thank you for registering!</h2>
+            <p>Your paket registration has been submitted successfully.</p>
+        </div>
+        <div id="externalContent" class="mt-3"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
